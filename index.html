@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apollo</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<div class="container">
+    <div class="view">
+        <div class="lander-wraper">
+            <div class="lander"></div>
+        </div>
+        <div class="moon-wrapper">
+            <div class="surface"></div>
+        </div>
+    </div>
+    <div class="controls">
+        <div class="indicators">
+            <div class="indi-wrapper alt-wrapper">
+                ALTITUDE:
+                <span class="height"></span>
+            </div>
+            <div class="indi-wrapper velo-wrapper">
+                VERTICAL VELOCITY:
+                <span class="speed"></span>
+            </div>
+            <div class="indi-wrapper fuel-wrapper">
+                FUEL:
+                <span class="fuel"></span>
+            </div>
+        </div>
+        <div class="inputs">
+            <div class="input-wrapper throttle-wrapper">
+                THROTTLE: <span class="throttle"></span>
+                <div class="slider"><input class="throttle" type="range" min="0" max="1" step="0.025" value="0" orient="vertical"></div>
+
+            </div>
+            <div class="input-wrapper buttons-wrapper">
+                <div class="alarms-wrapper"></div>
+                <div class="actions-wrapper">
+                    <button class="btn btnDetach">DETACH</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--<button class="btnDetach">DETACH</button>-->
+<!--<button class="power">POWER!</button>-->
+<script src="app/app.js" defer></script>
+</body>
+</html>
