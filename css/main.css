@@ -74,6 +74,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding: 15px;
 }
 
 .indicators, .inputs {
@@ -83,26 +84,450 @@
   display: flex;
 }
 
+.border {
+  border: 4px solid #666666;
+  border-radius: 10px;
+  margin: 10px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.warn {
+  color: #282828;
+  background-color: #111;
+  font-weight: 700;
+  text-align: center;
+  margin: 0px;
+  padding: 4px;
+  border: 4px solid #999999;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.warn-active {
+  color: darkorange;
+  text-shadow: 0 0 4px orange;
+}
+
 .indicators .indi-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  border: 1px solid white;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.indicators .title {
+  position: absolute;
+  top: 0;
+  -webkit-transform: translateY(-55%);
+          transform: translateY(-55%);
+  background-color: #333;
+  padding: 0 5px;
+  text-align: center;
 }
 
 .indicators .alt-wrapper {
   width: 30%;
 }
 
+.indicators .alt-wrapper .alt_gauge-container {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  width: 100px;
+  height: 250px;
+  margin: 10px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #333;
+  border: 2px solid #111;
+}
+
+.indicators .alt-wrapper .alt_gauge-container .alt_indi-frame {
+  position: absolute;
+  width: 100%;
+  height: 35px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  top: 50%;
+  -webkit-transform: translateY(-45%);
+          transform: translateY(-45%);
+  border: 2px solid red;
+}
+
+.indicators .alt-wrapper .alt_gauge-container .alt_indi-dimmer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.85)), color-stop(10%, rgba(0, 0, 0, 0.7)), color-stop(30%, transparent), color-stop(70%, transparent), color-stop(90%, rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.85)));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.7) 10%, transparent 30%, transparent 70%, rgba(0, 0, 0, 0.7) 90%, rgba(0, 0, 0, 0.85) 100%);
+}
+
+.indicators .alt-wrapper .alt_gauge-container .alt-wheel {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-right: 1px solid #333;
+  background-color: beige;
+  text-align: center;
+  overflow: hidden;
+}
+
+.indicators .alt-wrapper .alt_gauge-container .alt-wheel:last-of-type {
+  border: none;
+}
+
+.indicators .alt-wrapper .alt_gauge-container .alt-wheel .alt-num {
+  height: 40px;
+  position: relative;
+}
+
+.indicators .alt-wrapper .alt_gauge-container .alt-wheel .alt-num::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -30px);
+          transform: translate(-50%, -30px);
+  width: 40%;
+  height: 1px;
+  background-color: #333;
+}
+
 .indicators .velo-wrapper {
   width: 40%;
 }
 
+.indicators .velo-wrapper .velocity_gauge-container {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 180px;
+  height: 254px;
+  margin: 10px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #333;
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock {
+  background-color: beige;
+  border: 2px solid #111;
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num {
+  position: absolute;
+  bottom: 50%;
+  right: 50%;
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+  z-index: 1;
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(1) {
+  -webkit-transform: rotate(-75deg) translate(-50px, 50%);
+          transform: rotate(-75deg) translate(-50px, 50%);
+  color: red;
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(1) strong {
+  display: inline-block;
+  -webkit-transform: rotate(75deg);
+          transform: rotate(75deg);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(2) {
+  -webkit-transform: rotate(-45deg) translate(-50px, 50%);
+          transform: rotate(-45deg) translate(-50px, 50%);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(2) strong {
+  display: inline-block;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(3) {
+  -webkit-transform: rotate(-15deg) translate(-50px, 50%);
+          transform: rotate(-15deg) translate(-50px, 50%);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(3) strong {
+  display: inline-block;
+  -webkit-transform: rotate(15deg);
+          transform: rotate(15deg);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(4) {
+  -webkit-transform: rotate(-2.7deg) translate(-50px, 50%);
+          transform: rotate(-2.7deg) translate(-50px, 50%);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(4) strong {
+  display: inline-block;
+  -webkit-transform: rotate(2.7deg);
+          transform: rotate(2.7deg);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(5) {
+  -webkit-transform: rotate(22.2deg) translate(-50px, 50%);
+          transform: rotate(22.2deg) translate(-50px, 50%);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(5) strong {
+  display: inline-block;
+  -webkit-transform: rotate(-22.2deg);
+          transform: rotate(-22.2deg);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(6) {
+  -webkit-transform: rotate(49.8deg) translate(-50px, 50%);
+          transform: rotate(49.8deg) translate(-50px, 50%);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(6) strong {
+  display: inline-block;
+  -webkit-transform: rotate(-49.8deg);
+          transform: rotate(-49.8deg);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(7) {
+  -webkit-transform: rotate(89.1deg) translate(-50px, 50%);
+          transform: rotate(89.1deg) translate(-50px, 50%);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(7) strong {
+  display: inline-block;
+  -webkit-transform: rotate(-89.1deg);
+          transform: rotate(-89.1deg);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(8) {
+  -webkit-transform: rotate(119.1deg) translate(-50px, 50%);
+          transform: rotate(119.1deg) translate(-50px, 50%);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(8) strong {
+  display: inline-block;
+  -webkit-transform: rotate(-119.1deg);
+          transform: rotate(-119.1deg);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(9) {
+  -webkit-transform: rotate(167.1deg) translate(-50px, 50%);
+          transform: rotate(167.1deg) translate(-50px, 50%);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(9) strong {
+  display: inline-block;
+  -webkit-transform: rotate(-167.1deg);
+          transform: rotate(-167.1deg);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(10) {
+  -webkit-transform: rotate(223.2deg) translate(-50px, 50%);
+          transform: rotate(223.2deg) translate(-50px, 50%);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-num:nth-of-type(10) strong {
+  display: inline-block;
+  -webkit-transform: rotate(-223.2deg);
+          transform: rotate(-223.2deg);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo_hub {
+  width: 20px;
+  height: 20px;
+  background-color: #111;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 50%;
+  right: 50%;
+  -webkit-transform: translate(50%, 50%) rotate(-45deg);
+          transform: translate(50%, 50%) rotate(-45deg);
+  z-index: 2;
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo_hub::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background-color: red;
+  position: absolute;
+  bottom: 50%;
+  right: 50%;
+  -webkit-transform: translate(15px, 50%);
+          transform: translate(15px, 50%);
+  -webkit-box-shadow: 0 0 5px 1px #111;
+          box-shadow: 0 0 5px 1px #111;
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .greenhub {
+  -webkit-transform: translate(50%, 50%) rotate(1.5deg);
+          transform: translate(50%, 50%) rotate(1.5deg);
+  z-index: 0;
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .greenhub::after {
+  width: 100px;
+  -webkit-transform: translate(0, 50%);
+          transform: translate(0, 50%);
+  background-color: rgba(0, 255, 0, 0.98);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .greenhub::before {
+  color: green;
+  position: absolute;
+  width: 100px;
+  font-size: 0.5em;
+  content: 'TOUCHDOWN LIMIT';
+  -webkit-transform: translate(-72px, 0%);
+          transform: translate(-72px, 0%);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-clock .velo-dimmer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-indi-wrapper {
+  width: 180px;
+  height: 180px;
+}
+
+.indicators .velo-wrapper .velocity_gauge-container .velo-warn-wrapper {
+  width: 100%;
+}
+
 .indicators .fuel-wrapper {
   width: 30%;
+}
+
+.indicators .fuel-wrapper .fuel_gauge-container {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  width: 100px;
+  height: 250px;
+  background-color: beige;
+  color: #333;
+  border: 2px solid #111;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.indicators .fuel-wrapper .fuel_gauge-container .fuel-scale {
+  padding: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.indicators .fuel-wrapper .fuel_gauge-container .fuel-line {
+  border-bottom: 2px solid #333;
+  width: 30%;
+}
+
+.indicators .fuel-wrapper .fuel_gauge-container .fuel-lvl {
+  position: absolute;
+  bottom: 100%;
+  width: 100%;
+  height: 2px;
+  background-color: red;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+.indicators .fuel-wrapper .fuel_gauge-container .fuel-lvl::after, .indicators .fuel-wrapper .fuel_gauge-container .fuel-lvl::before {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  top: 50%;
+}
+
+.indicators .fuel-wrapper .fuel_gauge-container .fuel-lvl::after {
+  left: 0;
+  -webkit-transform: translate(-50%, -50%) scale(3, 0.7) rotate(45deg);
+          transform: translate(-50%, -50%) scale(3, 0.7) rotate(45deg);
+}
+
+.indicators .fuel-wrapper .fuel_gauge-container .fuel-lvl::before {
+  right: 0;
+  -webkit-transform: translate(50%, -50%) scale(3, 0.7) rotate(45deg);
+          transform: translate(50%, -50%) scale(3, 0.7) rotate(45deg);
+}
+
+.indicators .fuel-wrapper .fuel_gauge-container .fuel-dimmer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.4)), color-stop(20%, transparent), color-stop(80%, transparent), to(rgba(0, 0, 0, 0.4)));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.4));
 }
 
 .inputs .input-wrapper {
@@ -112,11 +537,99 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  border: 1px solid white;
+  padding: 5px;
 }
 
 .inputs .throttle-wrapper {
   width: 60%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.inputs .throttle-wrapper .throttleborder {
+  width: 200px;
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  background-color: #3a3a3a;
+  border: 4px solid #999999;
+}
+
+.inputs .throttle-wrapper .throttleborder .throttle_circle_first {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #4d4d4d;
+  border-radius: 50%;
+  background: radial-gradient(circle, #b3b3b3 0%, #b3b3b3 61%, #666666 68%, #4d4d4d 70%, #4d4d4d 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: calc(100% - 15px);
+  height: calc(100% - 15px);
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+}
+
+.inputs .throttle-wrapper .throttleborder .throttle_circle {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #333333;
+  border-radius: 50%;
+  background: radial-gradient(circle, #b3b3b3 0%, #b3b3b3 61%, #666666 68%, #4d4d4d 70%, #4d4d4d 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+}
+
+.inputs .throttle-wrapper .throttle-header {
+  text-align: center;
+  width: 100%;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: auto;
+}
+
+.inputs .throttle-wrapper .throttle-header .throttle-output {
+  height: 20px;
 }
 
 .inputs .buttons-wrapper {
@@ -132,22 +645,46 @@
 }
 
 .slider {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.slider .throttle {
+.slider .throttle-input {
   position: absolute;
-  bottom: 50%;
+  bottom: 0;
   left: 50%;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  width: 250px;
-  height: 50px;
-  -webkit-transform: translate(-50%, 50%) rotate(-90deg);
-          transform: translate(-50%, 50%) rotate(-90deg);
+  width: 110px;
+  -webkit-transform: translate(-50%, -60px) rotate(-90deg);
+          transform: translate(-50%, -60px) rotate(-90deg);
+  z-index: 5;
+  background: transparent;
+  color: transparent;
+}
+
+.slider .throttle-input:focus {
+  background: transparent;
+  color: transparent;
+  outline: none;
+}
+
+.slider .throttle-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 80px;
+  width: 30px;
+  border: 2px solid #e9b759;
+  background: radial-gradient(circle, #333 0%, #333 12%, transparent 13%, transparent 100%), radial-gradient(ellipse, wheat 0%, wheat 12%, #efca86 50%, #e9b759 100%);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 10px 1px #111;
+          box-shadow: 0 0 10px 1px #111;
 }
 
 /*======================================================================
@@ -161,11 +698,11 @@
           flex: 1 1 auto;
   overflow: hidden;
   background-image: url("../img/space.png");
-  background-size: 50%;
+  background-size: 200px;
 }
 
 .lander-wraper {
-  height: 75%;
+  height: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -180,12 +717,41 @@
 .lander {
   width: 95px;
   height: 70px;
-  background-color: #666666;
+  background-image: url("../img/eagle-img.png");
+  background-size: contain;
+  background-position: center center;
   position: absolute;
+  z-index: 1;
+}
+
+.lander .eagle {
+  width: 95px;
+  height: 70px;
+  background-image: url("../img/eagle-img.png");
+  background-size: contain;
+  background-position: center center;
+  position: absolute;
+  z-index: 5;
+}
+
+.lander .flame {
+  width: 50px;
+  height: 70px;
+  background-image: url("../img/flame.png");
+  background-size: cover;
+  background-position: center center;
+  position: absolute;
+  bottom: -65px;
+  left: 24px;
+  z-index: -1;
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
 
 .moon-wrapper {
-  height: 25%;
+  height: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -200,7 +766,11 @@
 .surface {
   width: 100%;
   height: 500px;
-  background-color: white;
+  background-image: url("../img/moon.png");
+  background-position: center 0;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: -110px;
 }
 
 /*# sourceMappingURL=main.css.map */
