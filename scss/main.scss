@@ -54,6 +54,13 @@ $colorInstrBorder: #666666;
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'lcd';
+  src: url('../fonts/lcdm2n__-webfont.woff2') format('woff2'), url('../fonts/lcdm2n__-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 /*======================================================================
       GENERAL STYLES
@@ -78,11 +85,20 @@ $colorInstrBorder: #666666;
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
+  border-left: 5px solid $colorInstrBorder;
+  //box-sizing: content-box;
 }
 
 .indicators, .inputs {
   height: 50%;
   display: flex;
+}
+
+.indicators {
+  align-items: flex-end;
+}
+.inputs {
+  align-items: flex-start;
 }
 
 .border {
@@ -101,7 +117,7 @@ $colorInstrBorder: #666666;
   background-color: #111;
   font-weight: 700;
   text-align: center;
-  margin: 0px;
+  margin: 0;
   padding: 4px;
   border: 4px solid lighten($colorInstrBorder, 20%);
   border-radius: 10px;
@@ -111,6 +127,27 @@ $colorInstrBorder: #666666;
 .warn-active {
   color: darkorange;
   text-shadow: 0 0 4px orange;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  transform: translateY(-55%);
+  background-color: #333;
+  padding: 0 5px;
+  text-align: center;
+}
+
+.buttons-wrapper {
+  width: 40%;
+
+  .alarms-wrapper {
+    height: 60%;
+  }
+
+  .ops-wrapper {
+    height: 60%;
+  }
 }
 
 
@@ -125,15 +162,6 @@ $colorInstrBorder: #666666;
     justify-content: center;
     align-items: center;
     //border: 1px solid white; // --- pomocnicze ---
-  }
-
-  .title {
-    position: absolute;
-    top: 0;
-    transform: translateY(-55%);
-    background-color: #333;
-    padding: 0 5px;
-    text-align: center;
   }
 
   .alt-wrapper {
@@ -192,7 +220,7 @@ $colorInstrBorder: #666666;
             position: absolute;
             bottom: 50%;
             left: 50%;
-            transform: translate(-50%, -30px);
+            transform: translate(-50%, -33px);
             width: 40%;
             height: 1px;
             background-color: #333;
@@ -238,6 +266,7 @@ $colorInstrBorder: #666666;
           &:nth-of-type(1) {
             transform: rotate(-45deg - 1 * 30deg) translate(-50px, 50%);
             color: red;
+
             strong {
               display: inline-block;
               transform: rotate(45deg + 1 * 30deg);
@@ -348,7 +377,7 @@ $colorInstrBorder: #666666;
             bottom: 50%;
             right: 50%;
             transform: translate(15px, 50%);
-            box-shadow: 0 0 5px 1px #111 ;
+            box-shadow: 0 0 5px 1px #111;
           }
         }
 
@@ -359,7 +388,7 @@ $colorInstrBorder: #666666;
           &::after {
             width: 100px;
             transform: translate(0, 50%);
-            background-color: rgba(0,255,0,0.98);
+            background-color: rgba(0, 255, 0, 0.98);
             box-shadow: none;
           }
 
@@ -445,12 +474,12 @@ $colorInstrBorder: #666666;
 
         &::after {
           left: 0;
-          transform: translate(-50%, -50%)  scale(3, 0.7) rotate(45deg);
+          transform: translate(-50%, -50%) scale(3, 0.7) rotate(45deg);
         }
 
         &::before {
           right: 0;
-          transform: translate(50%, -50%)  scale(3, 0.7) rotate(45deg);
+          transform: translate(50%, -50%) scale(3, 0.7) rotate(45deg);
         }
 
       }
@@ -483,6 +512,10 @@ $colorInstrBorder: #666666;
     width: 60%;
     flex-direction: column;
     align-items: center;
+
+    .throttle-border {
+      justify-content: space-between;
+    }
 
     .throttleborder {
       width: 200px;
@@ -524,43 +557,25 @@ $colorInstrBorder: #666666;
       }
     }
 
-
-    .throttle-header {
-      text-align: center;
-      width: 100%;
+    .throttle-output {
+      width: 100px;
       height: 30px;
-      display: flex;;
+      margin-top: 10px;
+      background: #000;
+      border: 5px solid darken($colorInstrBorder, 30%);
+      border-radius: 5px;
+      display: flex;
       justify-content: center;
-      padding: auto;
-
-      span {
-        //display: inline-block;
-        //width: 40%;
-      }
-
-      .throttle-output {
-        height: 20px;
-      }
-    }
-  }
-
-  .buttons-wrapper {
-    width: 40%;
-
-    .alarms-wrapper {
-      height: 60%;
-    }
-
-    .ops-wrapper {
-      height: 60%;
+      align-items: center;
+      font-family: 'lcd', Monospaced, sans-serif;
+      font-weight: 700;
+      text-shadow: 0 0 2px green;
+      color: lighten(green, 10%);
     }
   }
 }
 
 .slider {
-  //position: relative;
-  //width: 100%;
-  //height: 100%;
   display: flex;
   justify-content: center;
 
@@ -592,7 +607,7 @@ $colorInstrBorder: #666666;
     background: radial-gradient(circle, #333 0%, #333 12%, transparent 13%, transparent 100%), radial-gradient(ellipse, wheat 0%, wheat 12%, darken(wheat, 10%) 50%, darken(wheat, 20%) 100%);
     box-sizing: border-box;
     border-radius: 50%;
-    box-shadow: 0 0 10px 1px #111 ;
+    box-shadow: 0 0 10px 1px #111;
   }
 }
 
@@ -612,10 +627,11 @@ $colorInstrBorder: #666666;
 
 
 .lander-wraper {
-  height: 50%;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  position: relative;
 }
 
 
@@ -623,11 +639,11 @@ $colorInstrBorder: #666666;
   // 95 px === 950 cm --> 1 px = 10 cm
   width: 95px;
   height: 70px;
-  //overflow: hidden;
   background-image: url("../img/eagle-img.png");
   background-size: contain;
   background-position: center center;
   position: absolute;
+  bottom: -65px;
   z-index: 1;
 
   .eagle {
@@ -643,7 +659,6 @@ $colorInstrBorder: #666666;
   .flame {
     width: 50px;
     height: 70px;
-    //background-color: red;
     background-image: url("../img/flame.png");
     background-size: cover;
     background-position: center center;
@@ -654,22 +669,58 @@ $colorInstrBorder: #666666;
     transform-origin: top center;
     transform: scale(0);
   }
+
+  .csmodule {
+    //border: 1px solid red;
+    position: absolute;
+    bottom: 67px;
+    left: 1.1px;
+    width: 95px;
+    height: 150px;
+    background-image: url("../img/comand-service-img.png");
+    background-size: contain;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+  }
 }
 
 .moon-wrapper {
-  height: 50%;
+  height: 30vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  position: relative;
 }
 
 .surface {
   width: 100%;
-  height: 500px;
-  //background-color: white;
+  height: 1000px;
   background-image: url("../img/moon.png");
   background-position: center 0;
   background-repeat: no-repeat;
   position: absolute;
-  bottom: -110px;
+  top: 0;
+  //border: 1px solid red; // pomocnicza!!!!!1
+
+  #shadow {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    top: 53px;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+  }
+}
+
+
+.test {
+  color: green;
+  font-family: 'lcd', monospace;
+  //font-family: Arial;
 }

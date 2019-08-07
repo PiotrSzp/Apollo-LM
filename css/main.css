@@ -43,6 +43,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'lcd';
+  src: url("../fonts/lcdm2n__-webfont.woff2") format("woff2"), url("../fonts/lcdm2n__-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /*======================================================================
       GENERAL STYLES
 ======================================================================*/
@@ -75,6 +82,7 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 15px;
+  border-left: 5px solid #666666;
 }
 
 .indicators, .inputs {
@@ -82,6 +90,18 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.indicators {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.inputs {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .border {
@@ -108,7 +128,7 @@
   background-color: #111;
   font-weight: 700;
   text-align: center;
-  margin: 0px;
+  margin: 0;
   padding: 4px;
   border: 4px solid #999999;
   border-radius: 10px;
@@ -119,6 +139,28 @@
 .warn-active {
   color: darkorange;
   text-shadow: 0 0 4px orange;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  -webkit-transform: translateY(-55%);
+          transform: translateY(-55%);
+  background-color: #333;
+  padding: 0 5px;
+  text-align: center;
+}
+
+.buttons-wrapper {
+  width: 40%;
+}
+
+.buttons-wrapper .alarms-wrapper {
+  height: 60%;
+}
+
+.buttons-wrapper .ops-wrapper {
+  height: 60%;
 }
 
 .indicators .indi-wrapper {
@@ -135,16 +177,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.indicators .title {
-  position: absolute;
-  top: 0;
-  -webkit-transform: translateY(-55%);
-          transform: translateY(-55%);
-  background-color: #333;
-  padding: 0 5px;
-  text-align: center;
 }
 
 .indicators .alt-wrapper {
@@ -215,8 +247,8 @@
   position: absolute;
   bottom: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -30px);
-          transform: translate(-50%, -30px);
+  -webkit-transform: translate(-50%, -33px);
+          transform: translate(-50%, -33px);
   width: 40%;
   height: 1px;
   background-color: #333;
@@ -551,6 +583,12 @@
           align-items: center;
 }
 
+.inputs .throttle-wrapper .throttle-border {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .inputs .throttle-wrapper .throttleborder {
   width: 200px;
   height: 200px;
@@ -615,33 +653,26 @@
           transform: translateY(5px);
 }
 
-.inputs .throttle-wrapper .throttle-header {
-  text-align: center;
-  width: 100%;
+.inputs .throttle-wrapper .throttle-output {
+  width: 100px;
   height: 30px;
+  margin-top: 10px;
+  background: #000;
+  border: 5px solid #1a1a1a;
+  border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: auto;
-}
-
-.inputs .throttle-wrapper .throttle-header .throttle-output {
-  height: 20px;
-}
-
-.inputs .buttons-wrapper {
-  width: 40%;
-}
-
-.inputs .buttons-wrapper .alarms-wrapper {
-  height: 60%;
-}
-
-.inputs .buttons-wrapper .ops-wrapper {
-  height: 60%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'lcd', Monospaced, sans-serif;
+  font-weight: 700;
+  text-shadow: 0 0 2px green;
+  color: #00b300;
 }
 
 .slider {
@@ -702,7 +733,7 @@
 }
 
 .lander-wraper {
-  height: 50%;
+  height: 70vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -712,6 +743,7 @@
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  position: relative;
 }
 
 .lander {
@@ -721,6 +753,7 @@
   background-size: contain;
   background-position: center center;
   position: absolute;
+  bottom: -65px;
   z-index: 1;
 }
 
@@ -750,8 +783,20 @@
           transform: scale(0);
 }
 
+.lander .csmodule {
+  position: absolute;
+  bottom: 67px;
+  left: 1.1px;
+  width: 95px;
+  height: 150px;
+  background-image: url("../img/comand-service-img.png");
+  background-size: contain;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+}
+
 .moon-wrapper {
-  height: 50%;
+  height: 30vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -761,16 +806,39 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  position: relative;
 }
 
 .surface {
   width: 100%;
-  height: 500px;
+  height: 1000px;
   background-image: url("../img/moon.png");
   background-position: center 0;
   background-repeat: no-repeat;
   position: absolute;
-  bottom: -110px;
+  top: 0;
+}
+
+.surface #shadow {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 20px;
+  position: absolute;
+  top: 53px;
+  left: 50%;
+  border-radius: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.test {
+  color: green;
+  font-family: 'lcd', monospace;
 }
 
 /*# sourceMappingURL=main.css.map */

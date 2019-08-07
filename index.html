@@ -9,19 +9,21 @@
 <div class="container">
     <div class="view">
         <div class="lander-wraper">
-
             <div class="lander">
                 <div class="eagle"></div>
                 <div class="flame"></div>
+                <div class="csmodule"></div>
             </div>
         </div>
         <div class="moon-wrapper">
-            <div class="surface"></div>
+            <div class="surface">
+                <div id="shadow"></div>
+            </div>
         </div>
     </div>
     <div class="controls">
         <div class="indicators">
-<!--  ALTITUDE ========================== -->
+            <!--  ALTITUDE ========================== -->
             <div class="indi-wrapper alt-wrapper">
                 <div class="border alt-border">
                     <div class="title"><STRONG>ALTITUDE</STRONG></div>
@@ -135,9 +137,9 @@
                         </div>
                     </div>
                 </div>
-<!--                <span class="height"></span>-->
+                <!--                <span class="height"></span>-->
             </div>
-<!--  DESCENT VELOCITY ========================== -->
+            <!--  DESCENT VELOCITY ========================== -->
             <div class="indi-wrapper velo-wrapper">
                 <div class="border velocity-border">
                     <div class="title"><strong>DESCENT VELOCITY</strong></div>
@@ -155,7 +157,7 @@
                                 <div class="velo-num"><strong>50&nbsp;</strong>&nbsp;&mdash;</div>
                                 <div class="velo-num"><strong>80&nbsp;</strong>&nbsp;&mdash;</div>
                                 <div class="velo_hub" id="velo-hub"></div>
-                                <div class="velo_hub greenhub" ></div>
+                                <div class="velo_hub greenhub"></div>
                                 <div class="velo-dimmer"></div>
                             </div>
                         </div>
@@ -165,10 +167,10 @@
                     </div>
                 </div>
             </div>
-<!--  FUEL ========================== -->
+            <!--  FUEL ========================== -->
             <div class="indi-wrapper fuel-wrapper">
                 <div class="border fuel-border">
-                    <div class="title">FUEL</div>
+                    <div class="title"><strong>FUEL</strong></div>
                     <div class="fuel_gauge-container">
                         <div class="fuel-scale">100 %</div>
                         <div class="fuel-line"></div>
@@ -187,21 +189,23 @@
         </div>
         <div class="inputs">
             <div class="input-wrapper throttle-wrapper">
-                <div class="throttle-header"><strong>THROTTLE</strong></div>
-                <div class="throttle-output">0</div>
-                <div class="throttleborder border">
-                    <div class="slider">
-                        <input class="throttle-input" type="range" min="0" max="100" step="1" value="0"
-                               id="throttle" disabled="true">
-                    </div>
-                    <div class="throttle_circle_first">
-                        <div class="throttle_circle">
+                <div class="border throttle-border">
+                    <div class="title"><strong>THROTTLE</strong></div>
+                    <div class="throttle-output">00%</div>
+                    <div class="throttleborder border">
+                        <div class="slider">
+                            <input class="throttle-input" type="range" min="0" max="100" step="1" value="0"
+                                   id="throttle" disabled="true">
+                        </div>
+                        <div class="throttle_circle_first">
                             <div class="throttle_circle">
                                 <div class="throttle_circle">
                                     <div class="throttle_circle">
                                         <div class="throttle_circle">
                                             <div class="throttle_circle">
-                                                <div class="throttle_circle"></div>
+                                                <div class="throttle_circle">
+                                                    <div class="throttle_circle"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -209,16 +213,13 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-
-
             </div>
             <div class="input-wrapper buttons-wrapper">
                 <div class="alarms-wrapper"></div>
                 <div class="actions-wrapper">
                     <button class="btn btnDetach">DETACH</button>
+                    <p class="test">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci doloribus, ducimus eaque ex fugiat id illo ipsam magni, maiores minima molestias nisi perspiciatis, quae ratione reiciendis temporibus voluptatem? Nesciunt, voluptatum.</p>
                 </div>
             </div>
         </div>

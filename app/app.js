@@ -1,9 +1,8 @@
-let timestep = 1000 / 200; // minimal update time in ms
+// minimal update time in reps / sec
+const reps = 60;
+const timestep = 1000 / reps;
 
 // monitors
-// const speedMonitor = document.querySelector(".speed");
-// const heightMonitor = document.querySelector(".height");
-// const fuelMonitor = document.querySelector(".fuel");
 const throttleMonitor = document.querySelector(".throttle-output");
 const fuelLvl = document.querySelector("#fuel-lvl");
 const num1000 = document.querySelector("#alt1000");
@@ -22,21 +21,20 @@ const throttleMuffs = document.querySelectorAll(".throttle_circle");
 // models
 const moonSurface = document.querySelector(".surface");
 const moonLander = document.querySelector(".lander");
+const csmodule = document.querySelector(".csmodule");
 const flame = document.querySelector(".flame");
 const view = document.querySelector(".view");
+const shadow = document.querySelector("#shadow");
 
-
-// const btnPower = document.querySelector(".power");
-// const bar = document.querySelector(".bar");
-
+// game object
 const eagle = {
     isFlying: false,
     g: 1.62, //in m/s^2
     thrust: -2.99, //in m/s^2
     currentAcc: 0,  //in m/s^2
     fuel: 100, //in %
-    burnTime: 60, //in seconds
-    height: 1000, //in meters
+    burnTime: 30, //in seconds
+    height: 30, //in meters
     velocity: 0, //in m/s
     fuelUsage: 0, // in %/s
     throttle: 0, // in %
@@ -66,20 +64,27 @@ eagle.detectTouchdown = function () {
         this.height = 0;
         this.throttle = 0;
         this.isFlying = false;
-        eagle.render();
-        alert('Touch down. Contact speed = ' + contactVel);
+        if (contactVel > this.maxImpactSpeed) {
+            console.error('Crash. Contact speed = ' + contactVel);
+        } else {
+            console.info('Soft touchdown. Contact speed = ' + contactVel);
+        }
+        throttleIpt.disabled = true;
+        return true;
     }
 };
 
 eagle.update = function (deltatime) {
     let seconds = deltatime / 1000;
     eagle.height = (eagle.height >= eagle.velocity * seconds) ? (eagle.height - eagle.velocity * seconds) : 0;
+    if (eagle.detectTouchdown()) {
+        return
+    }
     eagle.velocity += eagle.currentAcc * seconds;
     eagle.fuel = (eagle.fuel >= eagle.fuelUsage * seconds) ? (eagle.fuel - eagle.fuelUsage * seconds) : 0;
     eagle.thrust = eagle.fuel > 0 ? eagle.thrust : 0;
     eagle.currentAcc = eagle.g + eagle.thrust * eagle.throttle / 100;
     eagle.fuelUsage = 100 / eagle.burnTime * eagle.throttle / 100;
-    // eagle.detectTouchdown();
 };
 
 eagle.render = function () {
@@ -87,14 +92,19 @@ eagle.render = function () {
 
     throttleIpt.value = this.throttle;
 
-    const landerTransform = -50 + 50 * (1 - (this.height / this.initialHeight));
-    moonLander.style.transform = `translateY(${ landerTransform }vh)`;
+    const landerTransform = this.height < 30 ? -this.height * 10 : -300;
+    moonLander.style.transform = `translateY(${ landerTransform }px)`;
 
-    const surfaceTransform = 1000 - 1000 * (1 - this.height / this.initialHeight);
-    moonSurface.style.transform = `translateY(${ surfaceTransform }vh)`;
+    if (this.initialHeight - this.height)
+        csmodule.style.transform = `translateY(${ (-this.initialHeight + this.height) * 10 }px)`;
 
-    const vievBackgroundPos = this.height;
-    view.style.backgroundPositionY = vievBackgroundPos + 'px';
+    const surfaceTransform = this.height < 30 ? 0 : this.height * 10 - 300;
+    moonSurface.style.transform = `translateY(${ surfaceTransform }px)`;
+
+    shadow.style.opacity = this.height < 50 ? 1 - this.height / 50 : 0;
+
+    const viewBackgroundPos = this.height > 30 ? this.height * 5 : 150;
+    view.style.backgroundPositionY = viewBackgroundPos + 'px';
 
     flame.style.transform = this.fuel > 0 ? `scale(${ eagle.throttle / 100 })` : `scale(${ 0 })`;
 
@@ -117,7 +127,8 @@ eagle.render = function () {
     this.velocity > this.maxImpactSpeed ? veloWarn.classList.add('warn-active') : veloWarn.classList.remove('warn-active');
 
     let velSqrt = this.velocity >= 0 ? Math.sqrt(this.velocity) : -Math.sqrt(-this.velocity);
-    veloHub.style.transform = `translate(50%, 50%) rotate(${-45 + velSqrt * 30}deg)`
+
+    veloHub.style.transform = `translate(50%, 50%) rotate(${ -45 + velSqrt * 30 }deg)`;
 
 
 };
@@ -141,7 +152,7 @@ function gameloop(time) {
         let loopCounter = 0; // infinite loop precaution
         while (delta >= timestep) {
             eagle.update(timestep);
-            eagle.detectTouchdown();
+            // eagle.detectTouchdown();
             delta -= timestep;
             loopCounter++;
             if (loopCounter > 500) {
@@ -163,13 +174,19 @@ document.addEventListener("DOMContentLoaded", function () {
         eagle.isFlying = true;
         throttleIpt.disabled = false;
         window.requestAnimationFrame(gameloop);
-        // gameloop(0);
-        // window.requestAnimationFrame((x) => console.log(x));
     });
 
     throttleIpt.addEventListener('input', e => eagle.moveThrottle(-eagle.throttle + Number(e.target.value)));
 
     document.addEventListener('wheel', e => eagle.moveThrottle(-e.deltaY / 10));
+
+    const t_burn_min = Math.sqrt(2 * eagle.g / Math.abs(eagle.thrust) * eagle.initialHeight * (Math.abs(eagle.thrust) - eagle.g)) / (Math.abs(eagle.thrust) - eagle.g);
+
+    const h_burn_min = eagle.g * eagle.initialHeight / (Math.abs(eagle.thrust));
+
+    console.log("t_burn_min = " + t_burn_min);
+    console.log("h_burn_min = " + h_burn_min);
+
 
     // eagle.render();
 });
