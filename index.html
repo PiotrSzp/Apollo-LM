@@ -216,19 +216,40 @@
                 </div>
             </div>
             <div class="input-wrapper buttons-wrapper">
-                <div class="alarms-wrapper"></div>
                 <div class="actions-wrapper">
-                    <button class="btn btnDetach">DETACH</button>
-                    <p class="test">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci doloribus, ducimus eaque ex fugiat id illo ipsam magni, maiores minima molestias nisi perspiciatis, quae ratione reiciendis temporibus voluptatem? Nesciunt, voluptatum.</p>
+                    <div class="btnBorder">
+                        <button class="btn btnDetach">DETACH FROM CSM</button>
+                    </div>
+
+                </div>
+                <div class="alarms-wrapper">
+                    <div class="border alarms-border">
+                        <div class="title">ALARMS</div>
+                        <div class="alarms-lights-wrapper">
+                            <div class="alarm-light" id="negVel">NEGATIVE<br/>VELOCITY</div>
+                            <div class="alarm-light" id="lowFuel">LOW<br/>FUEL</div>
+                            <div class="alarm-light" id="proxy">SURFACE<br/>PROXIMITY</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="console-wraper">
+                    <div class="console_screen-wrapper">
+                        <div class="console_screen">
+                            <div class="console_text" id="console">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="console_buttons-wrapper">
+                        <button class="console-button" id="INFObtn">INFO</button>
+                        <button class="console-button" id="RTRYbtn">RTRY</button>
+                        <button class="console-button" id="SENDbtn">SEND</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
-<!--<button class="btnDetach">DETACH</button>-->
-<!--<button class="power">POWER!</button>-->
 <script src="app/app.js" defer></script>
 </body>
 </html>
