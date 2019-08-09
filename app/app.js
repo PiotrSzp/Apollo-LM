@@ -1,3 +1,5 @@
+var socket = io();
+
 // minimal update time in reps / sec
 const reps = 60;
 const timestep = 1000 / reps;
@@ -36,6 +38,8 @@ const shadow = document.querySelector("#shadow");
 
 // game object
 const eagle = {
+    pilot: "Unnamed",
+    points: 0,
     isFlying: false,
     g: 1.62, //in m/s^2
     thrust: -2.99, //in m/s^2
@@ -286,6 +290,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     RTRYbtn.addEventListener('click', () => {
         eagle.isFlying = false;
+        eagle.points = 0;
         isFirstRun = true;
         clearTimeout(startTout);
         clrlog();
@@ -300,6 +305,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+    SENDbtn.addEventListener('click', e => {
+        e.preventDefault();
+        eagle.pilot = window.prompt('Podaj nick');
+        socket.emit('score_submit', eagle.pilot, eagle.points);
+
+    });
+
+
     throttleIpt.addEventListener('input', e => eagle.moveThrottle(-eagle.throttle + Number(e.target.value)));
 
     document.addEventListener('wheel', e => eagle.moveThrottle(-e.deltaY / 10));
@@ -308,6 +321,16 @@ document.addEventListener("DOMContentLoaded", function () {
     eagle.render();
 
     log('Transmission start...', eagle.info1, eagle.info2, '...', 'RECIVING TRANSMISION...', '...', eagle.hustonResp1, eagle.hustonResp2, eagle.hustonResp3, '...', 'Transmission start...', '...', 'Roger that, Huston.');
+
+    socket.on('score_emit', function(scores){
+        // $('#messages').append($('<li>').text(msg));
+        console.clear();
+        scores.sort((a,b) => b.score - a.score).forEach(el => {
+            console.log("Pilot: ", el.pilot, "||  Score: ", el.score);
+        })
+
+    });
+
 
 });
 
