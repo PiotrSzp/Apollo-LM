@@ -17,7 +17,7 @@ io.on('connection', function (socket) {
         scores.push({ pilot, score });
         console.log(scores);
 
-        socket.emit('score_emit', scores)
+        io.emit('score_emit', scores)
 
     })
 });

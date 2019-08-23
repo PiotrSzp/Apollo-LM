@@ -46,7 +46,7 @@ const eagle = {
     currentAcc: 0,  //in m/s^2
     fuel: 100, //in %
     burnTime: 0, //in seconds
-    height: 1000, //in meters
+    height: 500, //in meters
     velocity: 0, //in m/s
     fuelUsage: 0, // in %/s
     throttle: 0, // in %
@@ -108,11 +108,11 @@ eagle.detectTouchdown = function () {
             clrlog();
             eagle.points = 0;
             str = 'Crash. Contact speed = ' + contactVel.toFixed(2) + ' m/s';
-            log('--- MISSION STATUS ---', str, `Mission assesment: ${ eagle.points } PTS`, '----------------------', eagle.nixon);
+            log('--- MISSION STATUS ---', str, `Mission assessment: ${ eagle.points } PTS`, '----------------------', eagle.nixon);
         } else {
-            eagle.points = Math.round(666 * (1 - (contactVel / this.maxImpactSpeed) * (1 - (contactVel / this.maxImpactSpeed))) + 334 * (eagle.fuel * eagle.fuel / 2500));
+            eagle.points = Math.round(666 * (1 - (contactVel / this.maxImpactSpeed)) + 334 * (eagle.fuel * eagle.fuel / 2500));
             str = 'Soft touchdown. Contact speed = ' + contactVel.toFixed(2) + ' m/s. ';
-            log('--- MISSION STATUS ---', str, `Mission assesment: ${ eagle.points } PTS`, '----------------------', 'Transmission start...', '...', '"Houston, Tranquility Base here."', '...', '"The Eagle has landed."', '...', 'RECEIVING TRANSMISSION...', '...', '"Roger, Tranquility. We copy you on the ground. You got a bunch of guys about to turn blue. We are breathing again. Thanks a lot."', '...',  '...', '--- MISSION PROMPT ---', 'To broadcast your score, press "send" button on a console');
+            log('--- MISSION STATUS ---', str, `Mission assessment: ${ eagle.points } PTS`, '----------------------', 'Transmission start...', '...', '"Houston, Tranquility Base here."', '...', '"The Eagle has landed."', '...', 'RECEIVING TRANSMISSION...', '...', '"Roger, Tranquility. We copy you on the ground. You got a bunch of guys about to turn blue. We are breathing again. Thanks a lot."', '...',  '...', '--- MISSION PROMPT ---', `To broadcast your score (${eagle.points} PTS), press "send" button on a console`);
         }
         throttleIpt.disabled = true;
         return true;
@@ -322,15 +322,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     log('Transmission start...', eagle.info1, eagle.info2, '...', 'RECIVING TRANSMISION...', '...', eagle.hustonResp1, eagle.hustonResp2, eagle.hustonResp3, '...', 'Transmission start...', '...', 'Roger that, Huston.');
 
-    socket.on('score_emit', function(scores){
-        // $('#messages').append($('<li>').text(msg));
-        console.clear();
-        scores.sort((a,b) => b.score - a.score).forEach(el => {
-            console.log("Pilot: ", el.pilot, "||  Score: ", el.score);
-        })
-
-    });
-
 
 });
 
+socket.on('score_emit', function(scores){
+    // $('#messages').append($('<li>').text(msg));
+    console.clear();
+    scores.sort((a,b) => b.score - a.score);
+    let best10 = scores.slice(0, 10);
+    console.log("-- TOP 10 PILOTS --");
+    best10.forEach(el => {
+        console.log("Pilot: ", el.pilot, "||  Score: ", el.score);
+    })
+});
