@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apollo</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<div class="container">
+    <div class="view">
+        <div class="lander-wraper">
+            <div class="lander">
+                <div class="eagle"></div>
+                <div class="flame"></div>
+                <div class="csmodule"></div>
+            </div>
+        </div>
+        <div class="moon-wrapper">
+            <div class="surface">
+                <div id="shadow"></div>
+            </div>
+        </div>
+    </div>
+    <div class="controls">
+        <div class="indicators">
+            <!--  ALTITUDE ========================== -->
+            <div class="indi-wrapper alt-wrapper">
+                <div class="border alt-border">
+                    <div class="title"><STRONG>ALTITUDE</STRONG></div>
+                    <div class="alt_gauge-container">
+                        <div class="alt_indi-frame"></div>
+                        <div class="alt_indi-dimmer"></div>
+                        <div class="alt-wheel">
+                            <div class="numwrap" id="alt1000">
+                                <div class="alt-num">3</div>
+                                <div class="alt-num">2</div>
+                                <div class="alt-num">1</div>
+                                <div class="alt-num"><strong>0</strong></div>
+                                <div class="alt-num">9</div>
+                                <div class="alt-num">8</div>
+                                <div class="alt-num">7</div>
+                                <div class="alt-num">6</div>
+                                <div class="alt-num">5</div>
+                                <div class="alt-num">4</div>
+                                <div class="alt-num">3</div>
+                                <div class="alt-num">2</div>
+                                <div class="alt-num">1</div>
+                                <div class="alt-num"><strong>0</strong></div>
+                                <div class="alt-num">9</div>
+                                <div class="alt-num">8</div>
+                                <div class="alt-num">7</div>
+                            </div>
+                        </div>
+                        <div class="alt-wheel">
+                            <div class="numwrap" id="alt100">
+                                <div class="alt-num">3</div>
+                                <div class="alt-num">2</div>
+                                <div class="alt-num">1</div>
+                                <div class="alt-num"><strong>0</strong></div>
+                                <div class="alt-num">9</div>
+                                <div class="alt-num">8</div>
+                                <div class="alt-num">7</div>
+                                <div class="alt-num">6</div>
+                                <div class="alt-num">5</div>
+                                <div class="alt-num">4</div>
+                                <div class="alt-num">3</div>
+                                <div class="alt-num">2</div>
+                                <div class="alt-num">1</div>
+                                <div class="alt-num"><strong>0</strong></div>
+                                <div class="alt-num">9</div>
+                                <div class="alt-num">8</div>
+                                <div class="alt-num">7</div>
+                            </div>
+                        </div>
+                        <div class="alt-wheel">
+                            <div class="numwrap" id="alt10">
+                                <div class="alt-num">3</div>
+                                <div class="alt-num">2</div>
+                                <div class="alt-num">1</div>
+                                <div class="alt-num"><strong>0</strong></div>
+                                <div class="alt-num">9</div>
+                                <div class="alt-num">8</div>
+                                <div class="alt-num">7</div>
+                                <div class="alt-num">6</div>
+                                <div class="alt-num">5</div>
+                                <div class="alt-num">4</div>
+                                <div class="alt-num">3</div>
+                                <div class="alt-num">2</div>
+                                <div class="alt-num">1</div>
+                                <div class="alt-num"><strong>0</strong></div>
+                                <div class="alt-num">9</div>
+                                <div class="alt-num">8</div>
+                                <div class="alt-num">7</div>
+                            </div>
+                        </div>
+                        <div class="alt-wheel">
+                            <div class="numwrap" id="alt1">
+                                <div class="alt-num">3</div>
+                                <div class="alt-num">2</div>
+                                <div class="alt-num">1</div>
+                                <div class="alt-num"><strong>0</strong></div>
+                                <div class="alt-num">9</div>
+                                <div class="alt-num">8</div>
+                                <div class="alt-num">7</div>
+                                <div class="alt-num">6</div>
+                                <div class="alt-num">5</div>
+                                <div class="alt-num">4</div>
+                                <div class="alt-num">3</div>
+                                <div class="alt-num">2</div>
+                                <div class="alt-num">1</div>
+                                <div class="alt-num"><strong>0</strong></div>
+                                <div class="alt-num">9</div>
+                                <div class="alt-num">8</div>
+                                <div class="alt-num">7</div>
+                            </div>
+                        </div>
+                        <div class="alt-wheel">
+                            <div class="numwrap" id="alt00">
+                                <div class="alt-num">,30</div>
+                                <div class="alt-num">,20</div>
+                                <div class="alt-num">,10</div>
+                                <div class="alt-num"><strong>,00</strong></div>
+                                <div class="alt-num">,90</div>
+                                <div class="alt-num">,80</div>
+                                <div class="alt-num">,70</div>
+                                <div class="alt-num">,60</div>
+                                <div class="alt-num">,50</div>
+                                <div class="alt-num">,40</div>
+                                <div class="alt-num">,30</div>
+                                <div class="alt-num">,20</div>
+                                <div class="alt-num">,10</div>
+                                <div class="alt-num"><strong>,00</strong></div>
+                                <div class="alt-num">,90</div>
+                                <div class="alt-num">,80</div>
+                                <div class="alt-num">,70</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--                <span class="height"></span>-->
+            </div>
+            <!--  DESCENT VELOCITY ========================== -->
+            <div class="indi-wrapper velo-wrapper">
+                <div class="border velocity-border">
+                    <div class="title"><strong>DESCENT VELOCITY</strong></div>
+                    <div class="velocity_gauge-container">
+                        <div class="velo-indi-wrapper">
+                            <div class="velo-clock">
+                                <div class="velo-num"><strong>-1&nbsp;&nbsp;</strong>&nbsp;&mdash;</div>
+                                <div class="velo-num"><strong>0&nbsp;&nbsp;</strong>&nbsp;&mdash;</div>
+                                <div class="velo-num"><strong>1&nbsp;&nbsp;</strong>&nbsp;&mdash;</div>
+                                <div class="velo-num"><strong>2&nbsp;&nbsp;</strong>&nbsp;&mdash;</div>
+                                <div class="velo-num"><strong>5&nbsp;&nbsp;</strong>&nbsp;&mdash;</div>
+                                <div class="velo-num"><strong>10&nbsp;</strong>&nbsp;&mdash;</div>
+                                <div class="velo-num"><strong>20&nbsp;</strong>&nbsp;&mdash;</div>
+                                <div class="velo-num"><strong>30&nbsp;</strong>&nbsp;&mdash;</div>
+                                <div class="velo-num"><strong>50&nbsp;</strong>&nbsp;&mdash;</div>
+                                <div class="velo-num"><strong>80&nbsp;</strong>&nbsp;&mdash;</div>
+                                <div class="velo_hub" id="velo-hub"></div>
+                                <div class="velo_hub greenhub"></div>
+                                <div class="velo-dimmer"></div>
+                            </div>
+                        </div>
+                        <div class="velo-warn-wrapper">
+                            <div class="warn" id="velo-warn">MAX TOUCHDOWN SPEED 2.4&nbsp;M/S EXCEEDED</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  FUEL ========================== -->
+            <div class="indi-wrapper fuel-wrapper">
+                <div class="border fuel-border">
+                    <div class="title"><strong>FUEL</strong></div>
+                    <div class="fuel_gauge-container">
+                        <div class="fuel-scale">100 %</div>
+                        <div class="fuel-line"></div>
+                        <div class="fuel-scale">75 %</div>
+                        <div class="fuel-line"></div>
+                        <div class="fuel-scale">50 %</div>
+                        <div class="fuel-line"></div>
+                        <div class="fuel-scale">25 %</div>
+                        <div class="fuel-line"></div>
+                        <div class="fuel-scale">0 %</div>
+                        <div class="fuel-lvl" id="fuel-lvl"></div>
+                        <div class="fuel-dimmer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inputs">
+            <div class="input-wrapper throttle-wrapper">
+                <div class="border throttle-border">
+                    <div class="title"><strong>THROTTLE</strong></div>
+                    <div class="throttle-output">00%</div>
+                    <div class="throttleborder border">
+                        <div class="slider">
+                            <input class="throttle-input" type="range" min="0" max="100" step="1" value="0"
+                                   id="throttle" disabled="true">
+                        </div>
+                        <div class="throttle_circle_first">
+                            <div class="throttle_circle">
+                                <div class="throttle_circle">
+                                    <div class="throttle_circle">
+                                        <div class="throttle_circle">
+                                            <div class="throttle_circle">
+                                                <div class="throttle_circle">
+                                                    <div class="throttle_circle"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-wrapper buttons-wrapper">
+                <div class="actions-wrapper">
+                    <div class="btnBorder">
+                        <button class="btn btnDetach">DETACH FROM CSM</button>
+                    </div>
+
+                </div>
+                <div class="alarms-wrapper">
+                    <div class="border alarms-border">
+                        <div class="title">ALARMS</div>
+                        <div class="alarms-lights-wrapper">
+                            <div class="alarm-light" id="negVel">NEGATIVE<br/>VELOCITY</div>
+                            <div class="alarm-light" id="lowFuel">LOW<br/>FUEL</div>
+                            <div class="alarm-light" id="proxy">SURFACE<br/>PROXIMITY</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="console-wraper">
+                    <div class="console_screen-wrapper">
+                        <div class="console_screen">
+                            <div class="console_text" id="console">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="console_buttons-wrapper">
+                        <button class="console-button" id="INFObtn">INFO</button>
+                        <button class="console-button" id="RTRYbtn">RTRY</button>
+                        <button class="console-button" id="SENDbtn">SEND</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="app/app.js" defer></script>
+</body>
+</html>
