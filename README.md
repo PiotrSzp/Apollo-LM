@@ -1,5 +1,7 @@
 # Apollo-LM
 Apollo 11 Lunar Module Moon landing minigame.
+![Game screenshot](/img/screenshot.png?raw=true "Previev of a game main window")
+
 
 ## Project general info
 I have created this minigame as a final project on my JS/React bootcamp in CodersLab school. It is 99% pure HTML/CSS from scratch (exept for pictures of spacecrafts, moon, stars and those black-yellow stripes around some thingies on a dashboard). The idea for the game came from a childhood memory of old eductational program, some kind of multi-media encyclopedy. It had a similar minigame in it, but I couldn't event fine a single screenshot from it online, so I had to base on a 20-years-old blurred memory. Honestly, it was a great fun!
