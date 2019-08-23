@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     INFObtn.addEventListener('click', () => {
         clrlog();
-        log('-- MISSION BRIEFING --', 'Mission objective is to land softly on the moon.', 'Maximum safe landing speed is 2.4 m/s.', `You are now ${eagle.height} m above the surface. You have double the amount of fuel necessary to land from this height with zero speed if executed perfectly.`, 'You can control the speed by adjusting engine thrust with mouse wheel or by moving a throttle handle,', 'Watch out not to run out of fuel.','With perfect landing (speed = 0, remaining fuel = 50) you will score 1000 mission points.', '66% of points are awarded for speed, 34% for fuel efficiency,', 'Points are awarded proportionally to given parameter squared.', '----------------------',)
+        log('-- MISSION BRIEFING --', 'Mission objective is to land softly on the moon.', 'Maximum safe landing speed is 2.4 m/s.', `You are now ${eagle.height} m above the surface. You have double the amount of fuel necessary to land from this height with zero speed if executed perfectly.`, 'You can control the speed by adjusting engine thrust with mouse wheel or by moving a throttle handle,', 'Watch out not to run out of fuel.','With perfect landing (speed = 0, remaining fuel = 50) you will score 1000 mission points.', '66% of points are awarded for speed, 34% for fuel efficiency.', '----------------------',)
     });
 
 
