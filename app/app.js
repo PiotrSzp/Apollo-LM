@@ -1,4 +1,4 @@
-var socket = io();
+// var socket = io();
 
 // minimal update time in reps / sec
 const reps = 60;
@@ -308,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
     SENDbtn.addEventListener('click', e => {
         e.preventDefault();
         eagle.pilot = window.prompt('Podaj nick');
-        socket.emit('score_submit', eagle.pilot, eagle.points);
+        // socket.emit('score_submit', eagle.pilot, eagle.points);
 
     });
 
@@ -325,13 +325,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-socket.on('score_emit', function(scores){
-    // $('#messages').append($('<li>').text(msg));
-    console.clear();
-    scores.sort((a,b) => b.score - a.score);
-    let best10 = scores.slice(0, 10);
-    console.log("-- TOP 10 PILOTS --");
-    best10.forEach(el => {
-        console.log("Pilot: ", el.pilot, "||  Score: ", el.score);
-    })
-});
+// socket.on('score_emit', function(scores){
+//     // $('#messages').append($('<li>').text(msg));
+//     console.clear();
+//     scores.sort((a,b) => b.score - a.score);
+//     let best10 = scores.slice(0, 10);
+//     console.log("-- TOP 10 PILOTS --");
+//     best10.forEach(el => {
+//         console.log("Pilot: ", el.pilot, "||  Score: ", el.score);
+//     })
+// });
